@@ -21,7 +21,7 @@ Implement `widget` plug ( for more about a `plug`, see `@plotdb/block` ) which w
 Additionally, consider following `bootstrap`'s `form-group` + `label` structure when building a block-based widget. A possible construct of a widget:
 
     .form-group
-      label.d-flex
+      label.d-flex.flex-wrap
         div
           div(ld="label")
           span.variant
