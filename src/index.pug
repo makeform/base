@@ -29,7 +29,7 @@ div
         pubsub.on \init, (opt = {}) ~>
           @widget = new form.widget({root} <<< opt)
           @widget.on \mode, (m) ->
-            if !root => retrun
+            if !root => return
             <[view edit config]>.map (n) -> root.classList.toggle "m-#n", m == n
           if root => root.classList.toggle \m-edit, ((opt.mode or \edit) == \edit)
           @widget.init!then ~>
