@@ -1,5 +1,11 @@
 # Change Logs
 
+## v1.0.4
+
+ - fix bug: when `widget.deserialize` is called with `init` flag on, `meta` event won't be triggered, leading to possible incorrect visibility status based on disabled.
+   - this bug fix depends on `init` event of `@plotdb/form` in following release (`>=0.0.55`)
+
+
 ## v1.0.3
 
  - use `overflow-wrap` to break super long text instead of `word-break: break-all` which breaks all texts

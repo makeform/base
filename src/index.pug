@@ -33,7 +33,7 @@ div
             if !root => return
             <[view edit config]>.map (n) -> root.classList.toggle "m-#n", m == n
           # widget should not be shown if disabled to prevent unaccidentally editing.
-          @widget.on \meta, ~> root.classList.toggle \disabled, !!@widget._meta.disabled
+          @widget.on <[meta init]>, ~> root.classList.toggle \disabled, !!@widget._meta.disabled
           if root => root.classList.toggle \m-edit, ((opt.mode or \edit) == \edit)
           @widget.init!then ~>
             @widget.deserialize(data or {}, {init: true})
