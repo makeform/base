@@ -1,16 +1,15 @@
 module.exports =
   pkg:
     dependencies: [
-      { name: "proxise" }
-      { name: "ldview" }
-      { name: "@plotdb/form" }
+    * name: "proxise"
+    * name: "ldview"
+    * name: "@plotdb/form"
     ]
     i18n:
-      "en":
-        "required": "required"
-        # TODO i18n for `required` should be provided from @plotdb/form.
-      "zh-TW":
-        "required": "必填"
+      # TODO i18n for `required` should be provided from @plotdb/form.
+      "en": "required": "required"
+      "zh-TW": "required": "必填"
+  interface: -> @widget
   init: ({root, data, ctx, pubsub, i18n}) ->
     {form} = ctx
     if data.i18n => i18n.addResourceBundles data.i18n
@@ -27,6 +26,3 @@ module.exports =
         @widget.deserialize(data or {}, {init: true})
         root.classList.toggle \disabled, !!@widget._meta.disabled
         @widget
-
-  interface: -> @widget
-
