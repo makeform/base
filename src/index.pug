@@ -1,43 +1,4 @@
 div
   plug(name="widget")
-  style(type="text/css"): :stylus
-    :scope { break-inside: avoid }
-    :scope.m-view
-      *[ld=label] { opacity: 0.85; text-decoration: underline }
-      .m-edit { display: none!important }
-    :scope.m-edit
-      .m-view { display: none!important }
-    *[ld=content] { white-space: pre-wrap; word-break: break-word; overflow-wrap: break-word; }
-    :scope.disabled { display: none!important }
-  script(type="@plotdb/block"): :lsc
-    module.exports =
-      pkg:
-        dependencies: [
-          { name: "proxise" }
-          { name: "ldview" }
-          { name: "@plotdb/form" }
-        ]
-        i18n:
-          "en":
-            "required": "required"
-            # TODO i18n for `required` should be provided from @plotdb/form.
-          "zh-TW":
-            "required": "必填"
-      init: ({root, data, ctx, pubsub, i18n}) ->
-        {form} = ctx
-        if data.i18n => i18n.addResourceBundles data.i18n
-        data.{}config
-        pubsub.on \init, (opt = {}) ~>
-          @widget = new form.widget({root} <<< opt)
-          @widget.on \mode, (m) ->
-            if !root => return
-            <[view edit config]>.map (n) -> root.classList.toggle "m-#n", m == n
-          # widget should not be shown if disabled to prevent unaccidentally editing.
-          @widget.on <[meta init]>, ~> root.classList.toggle \disabled, !!@widget._meta.disabled
-          if root => root.classList.toggle \m-edit, ((opt.mode or \edit) == \edit)
-          @widget.init!then ~>
-            @widget.deserialize(data or {}, {init: true})
-            root.classList.toggle \disabled, !!@widget._meta.disabled
-            @widget
-
-      interface: -> @widget
+  style(type="text/css"): include:stylus index.styl
+  script(type="@plotdb/block"): include:lsc index.ls
