@@ -1,5 +1,10 @@
 # Change Logs
 
+## v1.0.5
+
+ - fix bug: fallback `data` to `{}` to prevent exceptions
+
+
 ## v1.0.4
 
  - fix bug: when `widget.deserialize` is called with `init` flag on, `meta` event won't be triggered, leading to possible incorrect visibility status based on disabled.

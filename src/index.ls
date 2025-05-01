@@ -10,7 +10,7 @@ module.exports =
       "en": "required": "required"
       "zh-TW": "required": "必填"
   interface: -> @widget
-  init: ({root, data, ctx, pubsub, i18n}) ->
+  init: ({root, data = {}, ctx, pubsub, i18n}) ->
     {form} = ctx
     if data.i18n => i18n.addResourceBundles data.i18n
     data.{}config
