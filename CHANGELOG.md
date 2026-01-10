@@ -1,5 +1,10 @@
 # Change Logs
 
+## v2.0.0 (upcoming)
+
+ - support @grantdash/composer host
+
+
 ## v1.0.5
 
  - fix bug: fallback `data` to `{}` to prevent exceptions
